@@ -37,12 +37,12 @@ st.markdown("""
 
     .faq-category {
         font-size: 1.05rem; font-weight: 700; color: #1E40AF;
-        background: #EFF6FF; padding: 10px 16px; border-radius: 8px;
+        background: rgba(30,58,138,0.1); padding: 10px 16px; border-radius: 8px;
         margin: 24px 0 8px 0; border-left: 4px solid #29B5E8;
     }
 
     .stat-card {
-        background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 100%);
+        background: linear-gradient(135deg, rgba(41,181,232,0.15) 0%, rgba(30,58,138,0.1) 100%);
         border-left: 4px solid #29B5E8; border-radius: 8px;
         padding: 16px 20px; margin-bottom: 12px;
     }
@@ -50,7 +50,7 @@ st.markdown("""
     .stat-card .lbl { font-size: 0.85rem; color: #64748B; margin-top: 2px; }
 
     .phase-card {
-        background: #F8FAFC; border: 1px solid #CBD5E1;
+        background: rgba(41,181,232,0.08); border: 1px solid rgba(41,181,232,0.3);
         border-radius: 10px; padding: 20px; margin-bottom: 16px;
         border-top: 4px solid #29B5E8;
     }
@@ -62,7 +62,7 @@ st.markdown("""
     }
 
     .insight-box {
-        background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 100%);
+        background: linear-gradient(135deg, rgba(41,181,232,0.15) 0%, rgba(30,58,138,0.1) 100%);
         border-left: 4px solid #29B5E8;
         border-radius: 8px; padding: 14px 18px; margin-bottom: 12px;
     }
@@ -79,7 +79,7 @@ st.markdown("""
         padding: 10px 14px; border-bottom: 1px solid #E2E8F0;
         font-size: 0.9rem;
     }
-    .tool-matrix tr:nth-child(even) { background: #F8FAFC; }
+    .tool-matrix tr:nth-child(even) { background: rgba(41,181,232,0.05); }
     .tool-matrix a { color: #1E40AF; text-decoration: none; font-weight: 600; }
     .tool-matrix a:hover { text-decoration: underline; }
 
@@ -90,7 +90,7 @@ st.markdown("""
     .flow-arrow { font-size: 1.4rem; color: #29B5E8; line-height: 1.2; }
     .flow-arrow-green { font-size: 1.4rem; color: #29B5E8; line-height: 1.2; }
     .flow-node {
-        background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 100%);
+        background: linear-gradient(135deg, rgba(41,181,232,0.15) 0%, rgba(30,58,138,0.1) 100%);
         border: 2px solid #29B5E8; color: #1E3A8A; border-radius: 8px;
         padding: 10px 32px; font-weight: 600; font-size: 0.95rem;
         text-align: center;
@@ -111,7 +111,7 @@ st.markdown("""
     }
     .flow-phase {
         border: 2px dashed #29B5E8; border-radius: 12px;
-        background: linear-gradient(180deg, #F0F9FF 0%, #E0F2FE 100%);
+        background: linear-gradient(180deg, rgba(41,181,232,0.1) 0%, rgba(41,181,232,0.15) 100%);
         padding: 18px 36px; display: flex; flex-direction: column;
         align-items: center; gap: 0; min-width: 280px;
     }
@@ -122,19 +122,19 @@ st.markdown("""
         border-radius: 12px;
     }
     .flow-phase-node {
-        background: #E0F2FE; border: 2px solid #29B5E8; color: #1E3A8A;
+        background: rgba(41,181,232,0.15); border: 2px solid #29B5E8; color: #1E3A8A;
         border-radius: 8px; padding: 8px 24px; font-weight: 600;
         font-size: 0.95rem; text-align: center;
     }
     .flow-phase-node-alt {
-        background: #E0F2FE; border: 2px solid #93C5FD; color: #1E40AF;
+        background: rgba(41,181,232,0.12); border: 2px solid #93C5FD; color: #1E40AF;
         border-radius: 8px; padding: 8px 24px; font-weight: 600;
         font-size: 0.95rem; text-align: center;
     }
     .flow-phase-arrow { font-size: 1.2rem; color: #29B5E8; line-height: 1.2; }
 
     [data-testid="stChatMessage"] {
-        background: #F0F9FF;
+        background: rgba(41,181,232,0.08);
         border: 1px solid #DBEAFE;
         border-radius: 12px;
         padding: 12px 16px;
@@ -152,7 +152,7 @@ st.markdown("""
     }
 
     .home-card {
-        background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 100%);
+        background: linear-gradient(135deg, rgba(41,181,232,0.15) 0%, rgba(30,58,138,0.1) 100%);
         border: 2px solid #29B5E8; border-radius: 16px;
         padding: 32px 24px; text-align: center; cursor: pointer;
         transition: transform 0.2s, box-shadow 0.2s;
@@ -167,7 +167,7 @@ st.markdown("""
     .home-card p { color: #1E40AF; margin: 0; font-size: 0.95rem; }
 
     .pre-phase {
-        background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 100%);
+        background: linear-gradient(135deg, rgba(41,181,232,0.15) 0%, rgba(30,58,138,0.1) 100%);
         border-left: 4px solid #29B5E8;
         border-radius: 8px; padding: 16px 20px; margin-bottom: 14px;
     }
@@ -177,7 +177,7 @@ st.markdown("""
     .pre-phase a { color: #1E40AF; font-weight: 600; }
 
     .tip-note {
-        background: #F0F9FF; border: 1px solid #BAE6FD;
+        background: rgba(41,181,232,0.08); border: 1px solid #BAE6FD;
         border-radius: 8px; padding: 10px 14px; margin: 12px 0;
         font-size: 0.85rem; color: #1E3A8A;
     }
@@ -290,7 +290,7 @@ elif st.session_state.page == "pre":
 
 <table class="tool-matrix">
 <tr><th colspan="3" style="background:#29B5E8; text-align:center; font-size:1.1rem;">FIRST 30 DAYS: Tasks to be Completed within your First 30 Days at Snowflake</th></tr>
-<tr><td colspan="3" style="background:#E0F2FE; font-weight:600; color:#1E3A8A; text-align:center;">***** Prioritize Completing these tasks. You will be reported on the completion of these requirements *****</td></tr>
+<tr><td colspan="3" style="background:rgba(41,181,232,0.15); font-weight:600; color:#1E3A8A; text-align:center;">***** Prioritize Completing these tasks. You will be reported on the completion of these requirements *****</td></tr>
 <tr><th style="width:22%">TASK</th><th style="width:53%">TASK DETAILS</th><th style="width:20%">ESTIMATED TIME TO COMPLETE</th></tr>
 <tr><td>Complete the Snowflake Partner Technical Foundations Class</td><td><a href="https://docs.google.com/presentation/d/18uGLo1JsuNozzaauSlXaq7juBHyepdMzDmYSsSrLIqA/edit?usp=sharing" target="_blank">Complete the Snowflake Partner Technical Foundations Class</a>.<br><br>Onboarding Team should've signed you up for this class during your Welcome Call. If not, you can follow the instructions using this link or slack #sales-boot-camp-support for assistance. You must complete this course within 30 Days after your hire date.<br><br>Follow these instructions to check that you are 100% complete with PTF.<br>Must be completed within 30 days from your Hire Date.</td><td>40 hours</td></tr>
 <tr><td>Complete the ACE Onboarding eLearning Path</td><td><a href="https://snowflake.seismic.com/Link/Content/DCHbTdbHq7qmH8mDp3m6fFMCMg4V" target="_blank">Follow these instructions</a> to complete your ACE Onboarding eLearning Path.<br>Must be completed within 30 days from your Hire Date.</td><td>34 hours</td></tr>
@@ -311,7 +311,7 @@ elif st.session_state.page == "pre":
 
 <table class="tool-matrix">
 <tr><th colspan="3" style="background:#29B5E8; text-align:center; font-size:1.1rem;">FIRST 60-180 DAYS: Tasks to be Completed within your First 60-90 Days at Snowflake</th></tr>
-<tr><td colspan="3" style="background:#E0F2FE; font-style:italic; color:#1E3A8A;">Ensure that your 30 Day Tasks are done before working these tasks.</td></tr>
+<tr><td colspan="3" style="background:rgba(41,181,232,0.15); font-style:italic; color:#1E3A8A;">Ensure that your 30 Day Tasks are done before working these tasks.</td></tr>
 <tr><th style="width:22%">TASK</th><th style="width:53%">TASK DETAILS</th><th style="width:20%">ESTIMATED TIME TO COMPLETE</th></tr>
 <tr><td>Complete the ACE Capstone</td><td>You must complete the ACE Capstone Project within 60 days from your start date.<br><br>Refer to the <a href="https://docs.google.com/document/d/157iZQDFTznF7TVmyR0AZ0Aug_ni79usnduxvmTSDDO4/edit" target="_blank">High-Level Steps for Completing the Capstone</a> for Completing the Capstone document. This is a single doc with instructions and links to all information for getting the Capstone done. Remember to read through everything thoroughly.</td><td>NA</td></tr>
 <tr><td>Study &amp; Pass the SnowPro Core Certification</td><td>You must pass the SnowPro Core Certification within 90 days from your start date.<br><br><a href="https://snowflake.seismic.com/Link/Content/DCHbTdbHq7qmH8mDp3m6fFMCMg4V" target="_blank">Click here for resources</a> on preparing for and taking the SnowPro Core Exam.</td><td>NA</td></tr>
@@ -1095,13 +1095,13 @@ Response Guidelines:
         for msg in st.session_state.chat_history:
             if msg["role"] == "user":
                 st.markdown(
-                    f'<div style="background:#E0F2FE;border-radius:12px;padding:10px 16px;margin-bottom:8px;">'
+                    f'<div style="background:rgba(41,181,232,0.15);border-radius:12px;padding:10px 16px;margin-bottom:8px;">'
                     f'<strong>You:</strong> {msg["content"]}</div>',
                     unsafe_allow_html=True,
                 )
             else:
                 st.markdown(
-                    f'<div style="background:#F0F9FF;border:1px solid #DBEAFE;border-radius:12px;padding:10px 16px;margin-bottom:8px;">'
+                    f'<div style="background:rgba(41,181,232,0.08);border:1px solid #DBEAFE;border-radius:12px;padding:10px 16px;margin-bottom:8px;">'
                     f'<strong>\u2744\ufe0f Assistant:</strong> {msg["content"]}</div>',
                     unsafe_allow_html=True,
                 )
