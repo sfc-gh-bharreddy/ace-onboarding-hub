@@ -5,7 +5,14 @@ A Streamlit application for new Activation Engineers at Snowflake.
 
 import json
 import streamlit as st
-from snowflake.snowpark.context import get_active_session
+
+try:
+    from snowflake.snowpark.context import get_active_session
+    _session = get_active_session()
+    IN_SNOWFLAKE = True
+except Exception:
+    _session = None
+    IN_SNOWFLAKE = False
 
 st.set_page_config(
     page_title="ACE Onboarding Hub",
@@ -149,6 +156,8 @@ st.markdown("""
         border: 2px solid #29B5E8; border-radius: 16px;
         padding: 32px 24px; text-align: center; cursor: pointer;
         transition: transform 0.2s, box-shadow 0.2s;
+        min-height: 180px; display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
     }
     .home-card:hover {
         transform: translateY(-3px);
@@ -492,7 +501,7 @@ elif st.session_state.page == "pre":
 </div>
 """, unsafe_allow_html=True)
 
-        session = get_active_session()
+        session = _session
         try:
             url_result = session.sql(
                 "SELECT GET_PRESIGNED_URL(@STREAMLIT_APPS.PUBLIC.ACE_ONBOARDING_STAGE, "
@@ -1052,7 +1061,7 @@ Response Guidelines:
 - Always be helpful and encouraging to new ACEs."""
 
         def get_cortex_response(user_question, chat_history):
-            session = get_active_session()
+            session = _session
             messages = [{"role": "system", "content": ACE_SYSTEM_PROMPT}]
             for msg in chat_history[-10:]:
                 messages.append({"role": msg["role"], "content": msg["content"]})
