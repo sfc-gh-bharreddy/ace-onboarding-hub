@@ -47,7 +47,7 @@ st.markdown("""
         padding: 16px 20px; margin-bottom: 12px;
     }
     .stat-card .num { font-size: 2rem; font-weight: 700; color: #1E3A8A; }
-    .stat-card .lbl { font-size: 0.85rem; color: #475569; margin-top: 2px; }
+    .stat-card .lbl { font-size: 0.85rem; color: #64748B; margin-top: 2px; }
 
     .phase-card {
         background: #F8FAFC; border: 1px solid #CBD5E1;
@@ -122,12 +122,12 @@ st.markdown("""
         border-radius: 12px;
     }
     .flow-phase-node {
-        background: #FFFFFF; border: 2px solid #29B5E8; color: #1E3A8A;
+        background: #E0F2FE; border: 2px solid #29B5E8; color: #1E3A8A;
         border-radius: 8px; padding: 8px 24px; font-weight: 600;
         font-size: 0.95rem; text-align: center;
     }
     .flow-phase-node-alt {
-        background: #FFFFFF; border: 2px solid #93C5FD; color: #1E40AF;
+        background: #E0F2FE; border: 2px solid #93C5FD; color: #1E40AF;
         border-radius: 8px; padding: 8px 24px; font-weight: 600;
         font-size: 0.95rem; text-align: center;
     }
@@ -141,7 +141,7 @@ st.markdown("""
         margin-bottom: 8px;
     }
     [data-testid="stChatMessage"] [data-testid="stMarkdownContainer"] {
-        color: #1E293B;
+        color: #1E3A8A;
     }
     [data-testid="stChatInput"] {
         border-color: #29B5E8 !important;
@@ -164,7 +164,7 @@ st.markdown("""
         box-shadow: 0 6px 20px rgba(41, 181, 232, 0.25);
     }
     .home-card h3 { color: #1E3A8A; margin: 0 0 8px 0; font-size: 1.3rem; }
-    .home-card p { color: #475569; margin: 0; font-size: 0.95rem; }
+    .home-card p { color: #1E40AF; margin: 0; font-size: 0.95rem; }
 
     .pre-phase {
         background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 100%);
@@ -172,7 +172,7 @@ st.markdown("""
         border-radius: 8px; padding: 16px 20px; margin-bottom: 14px;
     }
     .pre-phase h4 { color: #1E3A8A; margin: 0 0 6px 0; font-size: 1.05rem; }
-    .pre-phase ul { margin: 4px 0 0 0; padding-left: 20px; color: #334155; }
+    .pre-phase ul { margin: 4px 0 0 0; padding-left: 20px; color: #1E3A8A; }
     .pre-phase li { margin-bottom: 4px; }
     .pre-phase a { color: #1E40AF; font-weight: 600; }
 
