@@ -205,7 +205,10 @@ if "prev_page" not in st.session_state:
 def nav_to(page):
     st.session_state.prev_page = st.session_state.page
     st.session_state.page = page
-    st.experimental_rerun()
+    try:
+        st.rerun()
+    except AttributeError:
+        st.experimental_rerun()
 
 with st.sidebar:
     st.markdown("### \u2744\ufe0f ACE Onboarding Hub")
