@@ -326,8 +326,6 @@ elif st.session_state.page == "pre":
 </div>
 """, unsafe_allow_html=True)
 
-        st.markdown("---")
-        st.markdown("*This checklist replicates the ACE Onboarding Checklist. See also the Systems, Slack Channels, and Helpful Bookmarks tabs in the original spreadsheet for detailed setup instructions.*")
     with pre_tab2:
         st.markdown('<div class="section-hdr">Systems Access</div>', unsafe_allow_html=True)
         st.caption("Follow access notes instructions carefully. Go in the order listed.")
