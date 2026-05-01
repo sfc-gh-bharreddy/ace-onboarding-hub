@@ -259,13 +259,14 @@ elif st.session_state.page == "pre":
     st.markdown("## \u2744\ufe0f Pre-Onboarding")
     st.caption("Everything you need before your first day and through your first 90 days.")
 
-    pre_tab1, pre_tab2, pre_tab3, pre_tab4, pre_tab5, pre_tab6 = st.tabs([
+    pre_tab1, pre_tab2, pre_tab3, pre_tab4, pre_tab5, pre_tab6, pre_tab7 = st.tabs([
         "ACE Onboarding Checklist",
         "Systems",
         "Slack Channels",
         "Helpful Bookmarks",
         "SnowPro Certification",
         "Boot Camp Guide",
+        "Ask a Question",
     ])
 
     with pre_tab1:
@@ -347,7 +348,6 @@ elif st.session_state.page == "pre":
 <tr><td>Day 1</td><td>Glean</td><td>Natural Language search across Enterprise tools (GDrive, Slack, etc.)</td><td>Provisioned automatically. Navigate to Okta > Glean</td></tr>
 <tr><td>Day 1</td><td>Empyrean (US Only)</td><td>Benefits portal for health/welfare benefits</td><td>Provisioned automatically via Okta</td></tr>
 <tr><td>Week 1</td><td>ADP (US Only)</td><td>Payroll information - paystubs, annual statements</td><td>Provisioned automatically via Okta</td></tr>
-<tr><td>Week 1</td><td>Xactly</td><td>Commission statements</td><td>Provisioned automatically via Okta</td></tr>
 <tr><td>Week 1</td><td>Navan</td><td>Internal travel booking and management platform</td><td>Provisioned automatically. Navigate to Okta > Navan</td></tr>
 <tr><td>Week 1</td><td>Snowflake University</td><td>Learning Management System for customers + partners training</td><td>Login via SeerTech Okta Tile</td></tr>
 <tr><td>Week 1</td><td>Self Service</td><td>Desktop applications</td><td>Use Mac search icon to find the application</td></tr>
@@ -360,7 +360,6 @@ elif st.session_state.page == "pre":
 <table class="tool-matrix">
 <tr><th>Timeframe</th><th>System</th><th>What It's Used For</th><th>Access Notes</th></tr>
 <tr><td>Week 1</td><td>Salesforce</td><td>Customer and account management platform</td><td>Provisioned automatically. Navigate to Okta > Salesforce</td></tr>
-<tr><td>Week 1</td><td>Vivun</td><td>ACE customer and account management platform – team activity, opportunities, solutions assessments</td><td>Access via Vivun Homepage</td></tr>
 <tr><td>Week 1</td><td>MaxIQ</td><td>Snowflake's forecasting tool for submitting forecasts and inspecting Opportunities/Use Cases</td><td>Provisioned automatically. Navigate to Okta > MaxIQ</td></tr>
 <tr><td>Week 1</td><td>Duo</td><td>Multi-factor authentication for Production Deployments</td><td>Standalone mobile app. Configuration via invitation email from Duo</td></tr>
 <tr><td>Week 1</td><td>Lucidchart / Lucidspark</td><td>Architecture diagrams</td><td>Provisioned automatically. Navigate to Okta > Lucidchart</td></tr>
@@ -372,7 +371,7 @@ elif st.session_state.page == "pre":
 <tr><td>Week 1</td><td>Anaconda</td><td>Python environment management and Snowpark configuration</td><td>Follow Anaconda Setup for Solution Engineers instructions</td></tr>
 <tr><td>Week 1</td><td>Confluence</td><td>Snowflake's Wiki platform</td><td>Provisioned automatically. Navigate to Okta > Confluence</td></tr>
 <tr><td>Week 1</td><td>Snowflake Community</td><td>Main customer outreach portal</td><td>Navigate to Okta > Data Heroes tile</td></tr>
-<tr><td>Week 1</td><td>Gong (Commercial Only)</td><td>Sales analytics - records, transcribes and analyzes sales calls</td><td>Commercial ACEs only. Do not sign up if Enterprise/Industry</td></tr>
+<tr><td>Week 1</td><td>Gong</td><td>Sales analytics - records, transcribes and analyzes sales calls</td><td>Sales analytics platform that records, transcribes and analyzes sales calls</td></tr>
 <tr><td>Week 1</td><td>Ashby</td><td>Recruiting activities - Referrals, interview notes</td><td>Provisioned automatically via Okta</td></tr>
 <tr><td>Week 1</td><td>DataOps.Live</td><td>Deploy and maintain demos created by Solution Innovation team</td><td>Should be provisioned automatically via Okta</td></tr>
 <tr><td>Week 2</td><td>Glean</td><td>Snowflake enterprise search application</td><td>Provisioned automatically. Navigate to Okta > Glean</td></tr>
@@ -464,7 +463,6 @@ elif st.session_state.page == "pre":
 <tr><td><a href="https://snowflake.seismic.com/Link/Content/DC783F7q49297G9PJ9BF2C92jbMP" target="_blank">Solution Engineering Home Page</a></td><td>SE Home Page in Compass</td></tr>
 <tr><td><a href="https://snowflake.seismic.com/Link/Content/DCdPc7C2c9VcT8MDh6Bd4GbJ6hH3" target="_blank">Solution Innovation Team</a></td><td>Demo content and industry specific demonstration resources</td></tr>
 <tr><td><a href="https://docs.google.com/document/d/1-5MjkcAT2NCKCTdTZo5oojfSZdZkiop_qAOUTYKQ_l0/" target="_blank">Tips and Tricks for New Snowflake ACEs</a></td><td>Living document of tips and tricks encapsulating tribal knowledge</td></tr>
-<tr><td><a href="http://app.vivun.com/" target="_blank">Vivun</a></td><td>ACE customer and account management platform</td></tr>
 </table>
 """, unsafe_allow_html=True)
 
@@ -606,6 +604,73 @@ elif st.session_state.page == "pre":
     </ul>
 </div>
 """, unsafe_allow_html=True)
+
+
+    with pre_tab7:
+        st.markdown('<div class="section-hdr">Ask a Question</div>', unsafe_allow_html=True)
+        st.markdown(
+            "Ask anything about ACE onboarding, Snowflake tools, activation processes, or general Snowflake knowledge. "
+            "Powered by Snowflake Cortex AI."
+        )
+
+        if "pre_chat_history" not in st.session_state:
+            st.session_state.pre_chat_history = []
+
+        PRE_SYSTEM_PROMPT = """You are the ACE Onboarding Hub assistant for Snowflake. You help new Account Engineers (ACEs) at Snowflake with onboarding, tools setup, SnowPro certification prep, Boot Camp preparation, and general Snowflake knowledge. Be friendly, concise, and knowledgeable."""
+
+        def get_pre_cortex_response(user_question, chat_history):
+            session = _session
+            messages = [{"role": "system", "content": PRE_SYSTEM_PROMPT}]
+            for msg in chat_history[-10:]:
+                messages.append({"role": msg["role"], "content": msg["content"]})
+            messages.append({"role": "user", "content": user_question})
+
+            messages_json = json.dumps(messages)
+            result = session.sql(
+                "SELECT SNOWFLAKE.CORTEX.COMPLETE(?, PARSE_JSON(?), {})::STRING AS response",
+                params=["mistral-large2", messages_json]
+            ).collect()
+            raw = result[0]["RESPONSE"]
+            parsed = json.loads(raw)
+            return parsed["choices"][0]["messages"]
+
+        if "pre_pending_question" in st.session_state and st.session_state.pre_pending_question:
+            user_input = st.session_state.pre_pending_question
+            st.session_state.pre_pending_question = ""
+            st.session_state.pre_chat_history.append({"role": "user", "content": user_input})
+
+            with st.spinner("Thinking..."):
+                try:
+                    response = get_pre_cortex_response(user_input, st.session_state.pre_chat_history[:-1])
+                except Exception as e:
+                    response = f"Sorry, I encountered an error: {str(e)}. Try again or ask in #activation-all Slack channel."
+
+            st.session_state.pre_chat_history.append({"role": "assistant", "content": response})
+
+        for msg in st.session_state.pre_chat_history:
+            if msg["role"] == "user":
+                st.markdown(
+                    f'<div style="background:rgba(41,181,232,0.15);border-radius:12px;padding:10px 16px;margin-bottom:8px;">'
+                    f'<strong>You:</strong> {msg["content"]}</div>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown(
+                    f'<div style="background:rgba(41,181,232,0.08);border:1px solid #DBEAFE;border-radius:12px;padding:10px 16px;margin-bottom:8px;">'
+                    f'<strong>\u2744\ufe0f Assistant:</strong> {msg["content"]}</div>',
+                    unsafe_allow_html=True,
+                )
+
+        def _on_pre_chat_submit():
+            val = st.session_state.get("_pre_chat_input_val", "").strip()
+            if val:
+                st.session_state.pre_pending_question = val
+                st.session_state._pre_chat_input_val = ""
+
+        if IN_SNOWFLAKE:
+            st.text_input("Type your question and press Enter...", key="_pre_chat_input_val", on_change=_on_pre_chat_submit)
+        else:
+            st.info("AI chat is available when running on Snowflake. For now, ask questions in #activation-all Slack channel.")
 
 
 # =========================================================================
