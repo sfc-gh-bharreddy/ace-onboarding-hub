@@ -514,7 +514,12 @@ elif st.session_state.page == "pre":
 </div>
 """, unsafe_allow_html=True)
         except Exception:
-            st.info("Cheat sheet PDF available on the ACE Shared Google Drive.")
+            st.markdown("""
+<div class="insight-box">
+    <strong>Download Cheat Sheet (PDF)</strong><br>
+    <a href="https://github.com/sfc-gh-bharreddy/ace-onboarding-hub/raw/main/SnowPro_C03_MASTER_CheatSheet.pdf" target="_blank">SnowPro Core C03 Master Cheat Sheet</a>
+</div>
+""", unsafe_allow_html=True)
 
         st.markdown("""
 <div class="insight-box">
