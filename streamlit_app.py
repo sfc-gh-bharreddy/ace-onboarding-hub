@@ -48,6 +48,8 @@ st.markdown("""
     }
     .stat-card .num { font-size: 2rem; font-weight: 700; color: #1E3A8A; }
     .stat-card .lbl { font-size: 0.85rem; color: #64748B; margin-top: 2px; }
+    .stat-card a { color: #1E3A8A; text-decoration: none; }
+    .stat-card a:hover { text-decoration: underline; }
 
     .phase-card {
         background: rgba(41,181,232,0.08); border: 1px solid rgba(41,181,232,0.3);
@@ -388,6 +390,16 @@ elif st.session_state.page == "pre":
         st.markdown('<div class="section-hdr">Slack Channels</div>', unsafe_allow_html=True)
         st.caption("Focus on joining the Highly Recommended/Required channels first.")
 
+        st.markdown('<div class="faq-category">ACE Team Channels</div>', unsafe_allow_html=True)
+        st.markdown("""
+<table class="tool-matrix">
+<tr><th>Channel</th><th>Description</th></tr>
+<tr><td>#activation-all</td><td>Main channel for the entire Activation team — announcements, questions, collaboration</td></tr>
+<tr><td>#ace-team-global</td><td>Global ACE team channel for cross-regional coordination and discussions</td></tr>
+<tr><td>#ams-acquisition</td><td>Americas acquisition team channel for deal support and account discussions</td></tr>
+</table>
+""", unsafe_allow_html=True)
+
         st.markdown('<div class="faq-category">Highly Recommended / Required</div>', unsafe_allow_html=True)
         st.markdown("""
 <table class="tool-matrix">
@@ -500,24 +512,10 @@ elif st.session_state.page == "pre":
 </div>
 """, unsafe_allow_html=True)
 
-        session = _session
-        try:
-            url_result = session.sql(
-                "SELECT GET_PRESIGNED_URL(@STREAMLIT_APPS.PUBLIC.ACE_ONBOARDING_STAGE, "
-                "'ace_onboarding_hub/resources/SnowPro_C03_MASTER_CheatSheet.pdf', 604800) AS url"
-            ).collect()
-            pdf_url = url_result[0]["URL"]
-            st.markdown(f"""
+        st.markdown("""
 <div class="insight-box">
     <strong>Download Cheat Sheet (PDF)</strong><br>
-    <a href="{pdf_url}" target="_blank">SnowPro Core C03 Master Cheat Sheet</a>
-</div>
-""", unsafe_allow_html=True)
-        except Exception:
-            st.markdown("""
-<div class="insight-box">
-    <strong>Download Cheat Sheet (PDF)</strong><br>
-    <a href="https://github.com/sfc-gh-bharreddy/ace-onboarding-hub/raw/main/SnowPro_C03_MASTER_CheatSheet.pdf" target="_blank">SnowPro Core C03 Master Cheat Sheet</a>
+    <a href="https://drive.google.com/file/d/1cckUXHACywME_Iqypc2FkMRa8d27NhAp/view?usp=sharing" target="_blank">SnowPro Core C03 Master Cheat Sheet</a>
 </div>
 """, unsafe_allow_html=True)
 
@@ -531,6 +529,12 @@ elif st.session_state.page == "pre":
         st.markdown("""
 <div class="tip-note">
     <strong>Tip:</strong> Give yourself at least a 2-week buffer before your target deadline so you have time to retake if needed.
+</div>
+""", unsafe_allow_html=True)
+
+        st.markdown("""
+<div class="tip-note">
+    <strong>Tip:</strong> Take the official SnowPro Core practice tests before sitting for the real exam. You can expense as many practice tests as you need — they are a great way to identify knowledge gaps and build confidence.
 </div>
 """, unsafe_allow_html=True)
 
@@ -703,12 +707,16 @@ elif st.session_state.page == "post":
                 '<div class="lbl">Day Engagement Window</div></div>',
                 unsafe_allow_html=True,
             )
+            if st.button("View The ACE Journey", key="journey_90"):
+                nav_to("journey")
         with c2:
             st.markdown(
                 '<div class="stat-card"><div class="num">30/60/90</div>'
                 '<div class="lbl">Phased Framework</div></div>',
                 unsafe_allow_html=True,
             )
+            if st.button("View The ACE Journey", key="journey_3060"):
+                nav_to("journey")
 
         st.markdown('<div class="section-hdr">Key Insights</div>', unsafe_allow_html=True)
 
@@ -998,6 +1006,26 @@ The **ACE owns and drives** the plan. The **customer owns** execution. The accou
 **Worth tracking:** Customer satisfaction, time-to-value, usage growth, breadth of active users.
 """)
 
+        with st.expander("What is a Go Live?"):
+            st.markdown("""
+A **Use Case Go-Live** is when a customer moves from testing or building to running a real workload in production on Snowflake. The simple way to explain it: "when a customer's first production workload is running on Snowflake, real users are consuming the output, and the customer can operate it independently."
+
+It is when a client moves from idealization to "using" with real data. For example, if the use case is "AI chatbot," the customer has to bring in data, set up a semantic view, and deploy Cortex Agents. Can the customer open Snowflake Intelligence, ask questions, and get useful/valuable answers back? If yes, use case is live.
+
+**Go Live does not equal perfection** — most projects can always be improved. It's the first value realization moment for a specific use case.
+
+**Three components:**
+
+1. **Production-grade deployment** — Real data is flowing, real queries are running, and the environment is configured for performance, cost control, and security.
+2. **Business user adoption** — Someone outside of IT is actually using the output (a dashboard, a live pipeline, a model in production).
+3. **Operational independence** — The customer can sustain, monitor, and troubleshoot the use case without ACE hand-holding.
+
+**What it is NOT:**
+- Account creation or basic security setup (that's onboarding)
+- A successful POC (that's validation, not production)
+- A demo environment with sample data
+""")
+
         with st.expander("Recommendations for staying efficient"):
             st.markdown("""
 - Block dedicated Salesforce time
@@ -1023,6 +1051,13 @@ Measures credit usage change during/after activation vs. pre-activation baseline
 <div class="insight-box">
     <strong>ACE Notes & Templates</strong> — Shared notes, templates, and engagement artifacts:<br>
     <a href="https://drive.google.com/drive/folders/1ZxEo6UdpIdZS2AmTWf3O-B6RafHVIkmA" target="_blank">ACE Shared Google Drive</a>
+</div>
+""", unsafe_allow_html=True)
+
+        st.markdown("""
+<div class="insight-box">
+    <strong>Lunch & Learn Sessions</strong> — Continuous engagement sessions covering a wide variety of topics:<br>
+    <a href="https://drive.google.com/drive/folders/12gpWHui1HUS7HEat_oOb4aXOSq3nnoyG?usp=drive_link" target="_blank">Lunch & Learn Recordings</a>
 </div>
 """, unsafe_allow_html=True)
 
@@ -1181,3 +1216,113 @@ Response Guidelines:
                 st.session_state._chat_input_val = ""
 
         st.text_input("Type your question and press Enter...", key="_chat_input_val", on_change=_on_chat_submit)
+
+
+# =========================================================================
+# ACE JOURNEY PAGE (standalone, linked from stat cards)
+# =========================================================================
+elif st.session_state.page == "journey":
+    st.markdown("## \u2744\ufe0f The ACE Journey")
+    st.caption("The consolidated chronological roadmap every activation follows.")
+
+    st.markdown('<div class="section-hdr">The Activation Lifecycle</div>', unsafe_allow_html=True)
+    st.markdown(
+        "Each customer is unique, but these phases and checkpoints are consistent."
+    )
+
+    st.markdown("""
+<div class="phase-card">
+    <span class="timeframe">PRE-ENGAGEMENT</span>
+    <h4>Internal Prep & Account Research</h4>
+    <ul>
+        <li><strong>Step 1 — Review the TMR:</strong> Log in to
+            <a href="https://snowflake.elementum.io/work" target="_blank">Elementum</a>
+            and review the submitted Territory Management Request</li>
+        <li><strong>Step 2 — Use Case Hygiene:</strong> Update the TMR as needed, then complete
+            <a href="https://docs.google.com/presentation/d/1MxmNM6c_15_ZloQE4og3ubQPwtyxoOQ4wwSlmFdVDZE/edit?slide=id.g1ed82e8067d_0_2803" target="_blank">use case hygiene</a>
+            before moving forward:
+            <ul>
+                <li>Confirm each use case has a clear business objective and defined scope</li>
+                <li>Verify the customer has a technical owner identified for each use case</li>
+                <li>Ensure use cases align with Snowflake's activation motion</li>
+                <li>Flag anything out-of-scope or requiring further qualification</li>
+                <li>Prioritize use cases by readiness and business impact</li>
+            </ul>
+        </li>
+        <li>Research the account: review consumption data, user analytics, and Salesforce history</li>
+        <li>Schedule an internal sync with the account team to cover:
+            <ul>
+                <li>Activation goals and expectations</li>
+                <li>Deal context and key constraints</li>
+                <li>Customer champions and technical contacts</li>
+                <li>Partner involvement and key dates</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="phase-card">
+    <span class="timeframe">INTRODUCTION & KICKOFF</span>
+    <h4>First Contact & Setting the Foundation</h4>
+    <ul>
+        <li><strong>Intro Call:</strong> Joint call with the account team and customer stakeholders
+            to make introductions and schedule the kickoff</li>
+        <li><strong>Kickoff Call (activation-led):</strong>
+            <ul>
+                <li>Present the activation motion and phased framework</li>
+                <li>Discover use cases, current stack, constraints, and owners</li>
+                <li>Set communication preferences and recurring cadence</li>
+                <li>Align on initial action items and expectations</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="phase-card">
+    <span class="timeframe">PHASE 1 — FOUNDATIONS (Days 1-30)</span>
+    <h4>Security & Account Setup</h4>
+    <p>This is consistently the longest phase across all activations.</p>
+    <ul>
+        <li><strong>Cortex Code (Coco):</strong> Use Coco to accelerate technical tasks</li>
+        <li><a href="https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-overview">SSO</a> and <a href="https://docs.snowflake.com/en/user-guide/ui-snowsight-profile#label-snowsight-set-up-mfa">MFA</a> configuration</li>
+        <li><a href="https://docs.snowflake.com/en/user-guide/scim-intro">SCIM</a> provisioning</li>
+        <li><a href="https://docs.snowflake.com/en/user-guide/network-policies">Network policies</a> and private connectivity</li>
+        <li><a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview#role-hierarchy-and-privilege-inheritance">RBAC design</a></li>
+        <li><a href="https://docs.snowflake.com/en/user-guide/resource-monitors">Resource monitors</a> and <a href="https://docs.snowflake.com/en/user-guide/cost-optimization-overview">cost optimization</a></li>
+    </ul>
+</div>
+
+<div class="phase-card">
+    <span class="timeframe">PHASE 2 — BUILD (Days 30-60)</span>
+    <h4>Data Ingestion & Transformation</h4>
+    <ul>
+        <li>Ingestion patterns — staging, bulk loading, streaming</li>
+        <li>Pipeline pattern selection — <a href="https://docs.snowflake.com/en/user-guide/dynamic-tables-about">dynamic tables</a>, stored procedures, tasks</li>
+        <li>Data architecture design (Bronze, Silver, Gold layers)</li>
+        <li>BI tool integration and validation</li>
+        <li>Ongoing cost optimization and query performance review</li>
+    </ul>
+</div>
+
+<div class="phase-card">
+    <span class="timeframe">PHASE 3 — ACCELERATE (Days 60-90)</span>
+    <h4>Advanced Use Cases & Go-Live</h4>
+    <ul>
+        <li>Advanced capabilities — AI, analytics, conversational interfaces</li>
+        <li>Production readiness validation</li>
+        <li>Explore additional use cases and expansion opportunities</li>
+        <li>Performance tuning and final security/cost review</li>
+    </ul>
+</div>
+
+<div class="phase-card">
+    <span class="timeframe">HANDOFF & ROLL-OFF</span>
+    <h4>Transition Back to Account Team</h4>
+    <ul>
+        <li>Notify the account team in advance</li>
+        <li>Prepare handoff documentation</li>
+        <li>Account team joins the final customer call</li>
+        <li>Update Salesforce with final status and recommendations</li>
+    </ul>
+</div>
+""", unsafe_allow_html=True)
